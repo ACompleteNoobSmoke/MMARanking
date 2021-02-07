@@ -42,6 +42,29 @@ public class FighterInputs {
         return nickName;
     }
 
+    // Get gender input from user
+    public static String getGender() {
+        String gender = "";
+        while (gender.isBlank()) {
+            System.out.print("Enter Gender(M/F): ");
+            gender = ScannerInputs.getString();
+            gender = pickGender(gender);
+        }
+        return gender;
+    }
+
+    // Get gender according to input
+    private static String pickGender(String gender) {
+        if (gender.equalsIgnoreCase("Male") || (gender.charAt(0) == 'M') || (gender.charAt(0) == 'm')) {
+            gender = "Male";
+        } else if (gender.equalsIgnoreCase("Female") || (gender.charAt(0) == 'F') || (gender.charAt(0) == 'f')) {
+            gender = "Female";
+        } else {
+            return "";
+        }
+        return gender;
+    }
+
     // Get wins input from user
     public static int getWins() {
         int wins = -1;

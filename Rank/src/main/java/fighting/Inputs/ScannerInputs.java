@@ -7,12 +7,20 @@ public class ScannerInputs {
 
     private static Scanner scan = new Scanner(System.in);
 
+    // Get scanner
+    public static Scanner getScanner() {
+        return scan;
+    }
+
     // Get int inputs from user
     public static int getInt() {
         int newInt = 0;
         try {
+            while (!scan.hasNextInt()) {
+                scan.next();
+                return -1;
+            }
             newInt = scan.nextInt();
-            scan.nextLine();
         } catch (InputMismatchException e) {
             scan.nextLine();
         }

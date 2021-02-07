@@ -6,7 +6,7 @@ public class FighterModel {
     private String lastName;
     private String nickName;
     private int age;
-    private String homeState;
+    private String gender;
     private MeasurementModel fighterMeasurement;
     private FighterRecord fighterRecord;
     private StyleModel fighterStyle;
@@ -15,13 +15,13 @@ public class FighterModel {
 
     }
 
-    public FighterModel(String firstName, String lastName, String nickName, int age, String homeState,
+    public FighterModel(String firstName, String lastName, String nickName, int age, String gender,
             MeasurementModel fighterMeasurement, FighterRecord fighterRecord, StyleModel fighterStyle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nickName = nickName;
         this.age = age;
-        this.homeState = homeState;
+        this.gender = gender;
         this.fighterMeasurement = fighterMeasurement;
         this.fighterRecord = fighterRecord;
         this.fighterStyle = fighterStyle;
@@ -59,12 +59,12 @@ public class FighterModel {
         this.age = age;
     }
 
-    public String getHomeState() {
-        return homeState;
+    public String getGender() {
+        return gender;
     }
 
-    public void setHomeState(String homeState) {
-        this.homeState = homeState;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public MeasurementModel getFighterMeasurement() {
@@ -91,11 +91,11 @@ public class FighterModel {
         this.fighterStyle = fighterStyle;
     }
 
-	@Override
-	public String toString() {
-		return "FighterModel [age=" + age + ", fighterMeasurement=" + fighterMeasurement + ", fighterRecord="
-				+ fighterRecord + ", fighterStyle=" + fighterStyle + ", firstName=" + firstName + ", homeState="
-				+ homeState + ", lastName=" + lastName + ", nickName=" + nickName + "]";
-	}
+    @Override
+    public String toString() {
+        return "FighterModel [age=" + age + ", fighterMeasurement=" + fighterMeasurement + ", fighterRecord="
+                + fighterRecord.quickView() + ", fighterStyle=" + fighterStyle + ", firstName=" + firstName
+                + ", gender=" + gender + ", lastName=" + lastName + ", nickName=" + nickName + "]";
+    }
 
 }

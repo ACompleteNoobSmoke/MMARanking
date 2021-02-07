@@ -4,12 +4,33 @@ import fighting.Enums.WeightClass;
 
 public class MeasurementInput {
 
-    // Get weight input from user
-    public static double getWeight() {
+    // Get weight input for males
+    public static double getWeightMale() {
         double weight = 0;
         while (weight < 115 || weight > 265) {
             System.out.print("Enter Weight: ");
             weight = ScannerInputs.getDouble();
+        }
+        return weight;
+    }
+
+    // Get weight input for females
+    public static double getWeightFemale() {
+        double femaleWeight = 0;
+        while (femaleWeight < 105 || femaleWeight > 146) {
+            System.out.print("Enter Weight: ");
+            femaleWeight = ScannerInputs.getDouble();
+        }
+        return femaleWeight;
+    }
+
+    // Get weight input according to gender
+    public static double getWeight(String gender) {
+        double weight = 0;
+        if (gender.equalsIgnoreCase("Male")) {
+            weight = getWeightMale();
+        } else if (gender.equalsIgnoreCase("Female")) {
+            weight = getWeightFemale();
         }
         return weight;
     }

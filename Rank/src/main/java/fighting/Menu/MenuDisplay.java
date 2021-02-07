@@ -12,6 +12,7 @@ public class MenuDisplay {
         StrikingStyles[] striking = StrikingStyles.values();
 
         while (strikingChoice < 1 || strikingChoice > 5) {
+            System.out.println("STRIKING STYLES");
             int i = 0;
             for (StrikingStyles strikes : striking) {
                 System.out.println(++i + ". " + strikes);
@@ -29,6 +30,7 @@ public class MenuDisplay {
         GrapplingStyles[] grappling = GrapplingStyles.values();
 
         while (grapplingChoice < 1 || grapplingChoice > 4) {
+            System.out.println("GRAPPLING STYLES");
             int i = 0;
             for (GrapplingStyles grapple : grappling) {
                 System.out.println(++i + ". " + grapple);
