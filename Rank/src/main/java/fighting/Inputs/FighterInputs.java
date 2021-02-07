@@ -35,10 +35,8 @@ public class FighterInputs {
     // Get nickname input from user
     public static String getNickName() {
         String nickName = "";
-        while (nickName.isBlank()) {
-            System.out.print("Enter Nickname: ");
-            nickName = ScannerInputs.getString();
-        }
+        System.out.print("Enter Nickname: ");
+        nickName = ScannerInputs.getString();
         return nickName;
     }
 
