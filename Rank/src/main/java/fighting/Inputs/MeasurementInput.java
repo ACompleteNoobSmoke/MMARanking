@@ -4,6 +4,7 @@ import fighting.Model.WeightClass;
 
 public class MeasurementInput {
 
+    // Get weight input from user
     public static double getWeight() {
         double weight = 0;
         while (weight < 115 || weight > 265) {
@@ -13,6 +14,7 @@ public class MeasurementInput {
         return weight;
     }
 
+    // Get feet input from user
     private static int getFeet() {
         int feet = 0;
         while (feet < 5 || feet > 6) {
@@ -22,6 +24,7 @@ public class MeasurementInput {
         return feet;
     }
 
+    // Get inch input from user
     public static int getInch() {
         int inch = -1;
         while (inch < 0 || inch > 11) {
@@ -31,6 +34,7 @@ public class MeasurementInput {
         return inch;
     }
 
+    // Converts feet and inch into height string
     public static String getHeight() {
         String height = "";
         int feet = 0;
@@ -48,6 +52,7 @@ public class MeasurementInput {
         return height;
     }
 
+    // Gets weight class according to gender and weight
     public static WeightClass getWeightClass(String gender, double weight) {
         WeightClass weightClass = null;
         if (gender.equalsIgnoreCase("Male")) {
@@ -58,6 +63,7 @@ public class MeasurementInput {
         return weightClass;
     }
 
+    // Get all weight classes
     public static WeightClass getWeightClass(double weight) {
         WeightClass weightClass = null;
         if (weight >= 105 && weight <= 116) {
@@ -82,6 +88,7 @@ public class MeasurementInput {
         return weightClass;
     }
 
+    // Get all weight classes for male
     public static WeightClass getWeightClassMale(double weight) {
         WeightClass weightClass = null;
         if (weight > 116 && weight <= 126) {
@@ -104,6 +111,7 @@ public class MeasurementInput {
         return weightClass;
     }
 
+    // Get all weight classes for female
     public static WeightClass getWeightClassFemale(double weight) {
         WeightClass weightClass = null;
         if (weight >= 105 && weight <= 116) {

@@ -7,6 +7,7 @@ public class ScannerInputs {
 
     private static Scanner scan = new Scanner(System.in);
 
+    // Get int inputs from user
     public static int getInt() {
         int newInt = 0;
         try {
@@ -18,12 +19,14 @@ public class ScannerInputs {
         return newInt;
     }
 
+    // Get string input from user
     public static String getString() {
         String newString = "";
         newString = scan.nextLine();
         return newString;
     }
 
+    // Get double input from user
     public static double getDouble() {
         double newDouble = 0;
         try {
@@ -35,6 +38,7 @@ public class ScannerInputs {
         return newDouble;
     }
 
+    // Closes scanner
     public static void closeScanner() {
         scan.close();
     }
