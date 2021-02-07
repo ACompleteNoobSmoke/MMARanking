@@ -1,5 +1,7 @@
 package fighting.Model;
 
+import fighting.Enums.WeightClass;
+
 public class MeasurementModel {
 
     private WeightClass weightClass;

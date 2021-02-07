@@ -1,8 +1,8 @@
 package fighting.Menu;
 
 import fighting.Inputs.ScannerInputs;
-import fighting.Model.GrapplingStyles;
-import fighting.Model.StrikingStyles;
+import fighting.Enums.GrapplingStyles;
+import fighting.Enums.StrikingStyles;
 
 public class MenuDisplay {
 

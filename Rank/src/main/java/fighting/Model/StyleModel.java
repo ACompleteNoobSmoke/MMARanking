@@ -1,5 +1,8 @@
 package fighting.Model;
 
+import fighting.Enums.GrapplingStyles;
+import fighting.Enums.StrikingStyles;
+
 public class StyleModel {
 
     private StrikingStyles striking;

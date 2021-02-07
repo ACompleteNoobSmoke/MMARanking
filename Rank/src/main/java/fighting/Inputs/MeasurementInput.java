@@ -1,6 +1,6 @@
 package fighting.Inputs;
 
-import fighting.Model.WeightClass;
+import fighting.Enums.WeightClass;
 
 public class MeasurementInput {
 
