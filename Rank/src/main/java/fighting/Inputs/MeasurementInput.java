@@ -1,6 +1,7 @@
 package fighting.Inputs;
 
 import fighting.Enums.WeightClass;
+import fighting.Menu.MenuDisplay;
 
 public class MeasurementInput {
 
@@ -71,6 +72,18 @@ public class MeasurementInput {
             }
         }
         return height;
+    }
+
+    // Get weight class according to gender--mostly for searching function
+    public static WeightClass getWeightClassGender(String gender) {
+        MenuDisplay menu = new MenuDisplay();
+        WeightClass genderClass = null;
+        if (gender.equalsIgnoreCase("Male")) {
+            genderClass = menu.getWeightClassMale();
+        } else if (gender.equalsIgnoreCase("Female")) {
+            genderClass = menu.getWeightClassFemale();
+        }
+        return genderClass;
     }
 
     // Gets weight class according to gender and weight

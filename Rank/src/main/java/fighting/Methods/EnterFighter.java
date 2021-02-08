@@ -68,10 +68,4 @@ public class EnterFighter {
         System.out.println("");
         return new StyleModel(striking, grappling);
     }
-
-    public static void main(String[] args) {
-        EnterFighter fighter = new EnterFighter();
-        fighter.enterNewFighter();
-    }
-
 }

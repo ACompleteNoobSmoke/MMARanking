@@ -33,11 +33,63 @@ public class MenuDisplay {
     // }
     // }
 
-    public void getWeightClassesMale() {
+    // Display weight classes for males
+    public int showWeightClassesMale() {
         WeightClass[] classes = WeightClass.values();
-        for (int i = 0; i <= 7; i++) {
-            System.out.println(i + 1 + ". " + classes[i]);
+        int showPick = 0;
+        while (showPick < 1 || showPick > 8) {
+            System.out.println("*** WeightClass(Male) ***\n");
+            for (int i = 0; i <= 7; i++) {
+                System.out.println(i + 1 + ". " + classes[i]);
+            }
+            System.out.print("\nAction: ");
+            showPick = ScannerInputs.getInt();
         }
+        return showPick;
+    }
+
+    // Returns male weight class according to user input
+    public WeightClass getWeightClassMale() {
+        int maleWeightPick = showWeightClassesMale();
+        WeightClass[] classesMale = WeightClass.values();
+        WeightClass weightC = null;
+        for (int i = 0; i <= 7; i++) {
+            weightC = classesMale[i];
+            if (maleWeightPick == (i + 1)) {
+                break;
+            }
+        }
+        return weightC;
+    }
+
+    // Display weight class for females
+    public int showWeightClassesFemale() {
+        WeightClass[] classes = WeightClass.values();
+        int showPick = 0;
+        while (showPick < 1 || showPick > 4) {
+            System.out.println("*** WeightClass(Female) ***\n");
+            int j = 0;
+            for (int i = 5; i <= 8; i++) {
+                System.out.println(++j + ". " + classes[i]);
+            }
+            System.out.print("\nAction: ");
+            showPick = ScannerInputs.getInt();
+        }
+        return showPick;
+    }
+
+    // Returns female weight class according to user input
+    public WeightClass getWeightClassFemale() {
+        int femaleWeightPick = showWeightClassesFemale();
+        WeightClass[] classesFemale = WeightClass.values();
+        WeightClass weightC = null;
+        for (int i = 5; i <= 8; i++) {
+            weightC = classesFemale[i];
+            if (femaleWeightPick == (i - 4)) {
+                break;
+            }
+        }
+        return weightC;
     }
 
     // Display all of the striking styles
@@ -74,10 +126,5 @@ public class MenuDisplay {
         }
         System.out.println("");
         return grapplingChoice;
-    }
-
-    public static void main(String[] args) {
-        MenuDisplay menu = new MenuDisplay();
-        menu.getWeightClassesMale();
     }
 }
