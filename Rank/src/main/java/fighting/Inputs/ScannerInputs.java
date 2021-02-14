@@ -24,6 +24,7 @@ public class ScannerInputs {
         } catch (InputMismatchException e) {
             scan.nextLine();
         }
+        scan.nextLine();
         return newInt;
     }
 

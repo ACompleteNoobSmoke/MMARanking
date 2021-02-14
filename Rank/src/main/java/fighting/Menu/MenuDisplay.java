@@ -127,4 +127,35 @@ public class MenuDisplay {
         System.out.println("");
         return grapplingChoice;
     }
+
+    // Main View Menu
+    public int displayViewMenu() {
+        int viewPick = 0;
+        while (viewPick < 1 || viewPick > 3) {
+            System.out.println("*** View Menu ***\n");
+            System.out.println("1. View Fighter");
+            System.out.println("2. View Fighters");
+            System.out.println("3. Back");
+            System.out.print("\nAction: ");
+            viewPick = ScannerInputs.getInt();
+            System.out.println("");
+        }
+        return viewPick;
+    }
+
+    public int displayAllMenu() {
+        int viewAllPick = 0;
+        while (viewAllPick < 1 || viewAllPick > 5) {
+            System.out.println("*** View All Menu ***\n");
+            System.out.println("1. View All(Male)");
+            System.out.println("2. View All(Female)");
+            System.out.println("3. View All(Weight Class)");
+            System.out.println("4. View All Fighters");
+            System.out.println("5. Back");
+            System.out.print("\nAction: ");
+            viewAllPick = ScannerInputs.getInt();
+            System.out.println("");
+        }
+        return viewAllPick;
+    }
 }

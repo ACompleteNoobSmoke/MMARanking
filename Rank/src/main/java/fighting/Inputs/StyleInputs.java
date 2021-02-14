@@ -18,7 +18,8 @@ public class StyleInputs {
     // Returns striking enum
     private static StrikingStyles pickedStrike(int strikePick, StrikingStyles striking) {
         StrikingStyles[] strikeArray = StrikingStyles.values();
-        for (int i = 1; i <= 5; i++) {
+        strikePick--;
+        for (int i = 0; i <= 4; i++) {
             striking = strikeArray[i];
             if (strikePick == i) {
                 break;
@@ -40,7 +41,8 @@ public class StyleInputs {
     // Returns grappling enum
     public static GrapplingStyles pickedGrappling(int grapplePick, GrapplingStyles grappling) {
         GrapplingStyles[] grappleArray = GrapplingStyles.values();
-        for (int i = 1; i <= 4; i++) {
+        grapplePick--;
+        for (int i = 0; i <= 3; i++) {
             grappling = grappleArray[i];
             if (grapplePick == i) {
                 break;

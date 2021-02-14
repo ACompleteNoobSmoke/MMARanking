@@ -4,6 +4,7 @@ import fighting.Enums.WeightClass;
 
 public class MeasurementModel {
 
+    private String gender;
     private WeightClass weightClass;
     private double weight;
     private String height;
@@ -12,10 +13,19 @@ public class MeasurementModel {
 
     }
 
-    public MeasurementModel(WeightClass weightClass, double weight, String height) {
+    public MeasurementModel(String gender, WeightClass weightClass, double weight, String height) {
+        this.gender = gender;
         this.weightClass = weightClass;
         this.weight = weight;
         this.height = height;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     public void setWeightClass(WeightClass weightClass) {
@@ -43,7 +53,8 @@ public class MeasurementModel {
     }
 
     public String toString() {
-        return "Weight Class: " + weightClass + "\n" + "Weight: " + weight + " lbs\n" + "Height:  " + height;
+        return "Gender: " + gender + "\n" + "Weight Class: " + weightClass + "\n" + "Weight: " + weight + " lbs\n"
+                + "Height:  " + height;
     }
 
 }

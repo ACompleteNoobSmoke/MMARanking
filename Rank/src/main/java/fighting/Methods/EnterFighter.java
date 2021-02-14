@@ -1,71 +1,82 @@
 package fighting.Methods;
 
+import java.util.Random;
+
 import fighting.Enums.GrapplingStyles;
 import fighting.Enums.StrikingStyles;
 import fighting.Enums.WeightClass;
 import fighting.Inputs.FighterInputs;
 import fighting.Inputs.MeasurementInput;
 import fighting.Inputs.StyleInputs;
-import fighting.Model.FighterModel;
-import fighting.Model.FighterRecord;
-import fighting.Model.MeasurementModel;
-import fighting.Model.StyleModel;
 
 public class EnterFighter {
 
     public void enterNewFighter() {
         System.out.println("*** Enter New Fighter ***");
-        String firstName = FighterInputs.getFirstName();
-        String lastName = FighterInputs.getLastName();
-        String nickName = FighterInputs.getNickName();
-        String gender = FighterInputs.getGender();
-        int age = FighterInputs.getAge();
-        System.out.println("");
-
+        int fighterID = getFighterID();
+        enterFighterInfo(fighterID);
         // Fighter Measurement
-        MeasurementModel fighterMeasurement = enterMeasurement(gender);
-
+        enterMeasurement(fighterID);
         // Fighter Fighting Style
-        StyleModel fighterStyle = enterStyle();
-
+        enterStyle(fighterID);
         // Fighter Record
-        FighterRecord fighterRecords = enterRecord();
+        enterRecord(fighterID);
+    }
 
-        FighterModel newFighter = new FighterModel(firstName, lastName, nickName, age, gender, fighterMeasurement,
-                fighterRecords, fighterStyle);
-        System.out.println(newFighter);
+    // Get Random ID For Fighter
+    private int getFighterID() {
+        boolean exists = true;
+        int fighterID = 0;
+        Random rando = new Random();
+        while (exists) {
+            fighterID = rando.nextInt(2000);
+            exists = DatabaseMethods.checkFighterID(fighterID);
+        }
+        return fighterID;
 
     }
 
+    // Enter Fighter Information
+    private void enterFighterInfo(int fighterID) {
+        String firstName = FighterInputs.getFirstName();
+        String lastName = FighterInputs.getLastName();
+        String nickName = FighterInputs.getNickName();
+        int age = FighterInputs.getAge();
+        System.out.println("");
+        DatabaseMethods.insertFighterInfo(fighterID, firstName, lastName, nickName, age);
+    }
+
     // Enter Fighter Measurement
-    private MeasurementModel enterMeasurement(String gender) {
+    private void enterMeasurement(int fighterID) {
         System.out.println("*** Fighter Body Measurements ***\n");
+        String gender = FighterInputs.getGender();
         String height = MeasurementInput.getHeight();
         double weight = MeasurementInput.getWeight(gender);
         WeightClass weightClass = MeasurementInput.getWeightClass(gender, weight);
         System.out.println("According to your weight of " + weight + "lbs");
         System.out.println("Your weight class is " + weightClass.toString());
         System.out.println("");
-        return new MeasurementModel(weightClass, weight, height);
+        DatabaseMethods.insertFighterBody(fighterID, gender, height, weight, weightClass);
     }
 
     // Enter Fighter Record
-    private FighterRecord enterRecord() {
+    private void enterRecord(int fighterID) {
         System.out.println("*** Fighter Record ***\n");
         int wins = FighterInputs.getWins();
         int losses = FighterInputs.getLosses();
         int draws = FighterInputs.getDraws();
         int noContest = FighterInputs.getNoContest();
         System.out.println("");
-        return new FighterRecord(wins, losses, draws, noContest);
+        DatabaseMethods.insertFighterRecord(fighterID, wins, losses, draws, noContest);
     }
 
     // Enter Fighter Styles
-    private StyleModel enterStyle() {
+    private void enterStyle(int fighterID) {
         System.out.println("*** Fighter Style ***\n");
         StrikingStyles striking = StyleInputs.getStriking();
         GrapplingStyles grappling = StyleInputs.getGrappling();
         System.out.println("");
-        return new StyleModel(striking, grappling);
+        DatabaseMethods.insertFighterStyle(fighterID, striking, grappling);
     }
+
 }
