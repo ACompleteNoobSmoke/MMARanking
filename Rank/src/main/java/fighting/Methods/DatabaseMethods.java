@@ -142,7 +142,7 @@ public class DatabaseMethods {
     }
 
     // Get fighter using fighterID from the database
-    private static FighterModel getFighterBySearch(int fighterID) {
+    public static FighterModel getFighterBySearch(int fighterID) {
         try {
             // Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(

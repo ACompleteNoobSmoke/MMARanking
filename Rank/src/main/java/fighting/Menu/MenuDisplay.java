@@ -24,15 +24,6 @@ public class MenuDisplay {
         return menuChoice;
     }
 
-    // Search Menu Display
-    // public int searchMenu() {
-    // int searchChoice = 0;
-    // while (searchChoice < 1 || searchChoice) {
-    // System.out.println("*** Search Fighter ***\n");
-    // System.out.println("1. Search(Name)")
-    // }
-    // }
-
     // Display weight classes for males
     public int showWeightClassesMale() {
         WeightClass[] classes = WeightClass.values();
@@ -133,7 +124,7 @@ public class MenuDisplay {
         int viewPick = 0;
         while (viewPick < 1 || viewPick > 3) {
             System.out.println("*** View Menu ***\n");
-            System.out.println("1. View Fighter");
+            System.out.println("1. View Search Fighter");
             System.out.println("2. View Fighters");
             System.out.println("3. Back");
             System.out.print("\nAction: ");
@@ -157,5 +148,19 @@ public class MenuDisplay {
             System.out.println("");
         }
         return viewAllPick;
+    }
+
+    public int displayWeightMenu() {
+        int viewAllWeightPick = 0;
+        while (viewAllWeightPick < 1 || viewAllWeightPick > 4) {
+            System.out.println("*** View All(Weight Class) ***");
+            System.out.println("1. Male Weight Class");
+            System.out.println("2. Female Weight Class");
+            System.out.println("3. All Weight Class");
+            System.out.println("4. Back");
+            System.out.print("\nAction: ");
+            viewAllWeightPick = ScannerInputs.getInt();
+        }
+        return viewAllWeightPick;
     }
 }
