@@ -97,6 +97,41 @@ public class MeasurementInput {
         return weightClass;
     }
 
+    public static WeightClass getWeightClass() {
+        int pick = new MenuDisplay().displayWeightClass();
+        WeightClass weightClass = null;
+        switch (pick) {
+            case 1:
+                weightClass = WeightClass.Heavyweight;
+                break;
+            case 2:
+                weightClass = WeightClass.LightHeavyweight;
+                break;
+            case 3:
+                weightClass = WeightClass.Middleweight;
+                break;
+            case 4:
+                weightClass = WeightClass.Welterweight;
+                break;
+            case 5:
+                weightClass = WeightClass.Lightweight;
+                break;
+            case 6:
+                weightClass = WeightClass.Featherweight;
+                break;
+            case 7:
+                weightClass = WeightClass.Bantamweight;
+                break;
+            case 8:
+                weightClass = WeightClass.Flyweight;
+                break;
+            case 9:
+                weightClass = WeightClass.Strawweight;
+                break;
+        }
+        return weightClass;
+    }
+
     // Get all weight classes
     public static WeightClass getWeightClass(double weight) {
         WeightClass weightClass = null;

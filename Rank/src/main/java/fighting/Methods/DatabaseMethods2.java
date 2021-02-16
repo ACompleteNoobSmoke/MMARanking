@@ -89,19 +89,25 @@ public class DatabaseMethods2 {
         return true;
     }
 
-    // Converts Arraylist of Fighters by their gender to an array
-    public static FighterModel[] genderFighterArray(String gender) {
-        ArrayList<FighterModel> convertThis = getFightersByGender(gender);
-        if (convertThis == null) {
+    // Converts Arraylist into array
+    private static FighterModel[] convertToArray(ArrayList<FighterModel> convertFighters) {
+        if (convertFighters == null) {
             return null;
         } else {
-            int size = convertThis.size();
+            int size = convertFighters.size();
             FighterModel[] fighters = new FighterModel[size];
             for (int i = 0; i < size; i++) {
-                fighters[i] = convertThis.get(i);
+                fighters[i] = convertFighters.get(i);
             }
             return fighters;
         }
+    }
+
+    // Converts Arraylist of Fighters by their gender to an array
+    public static FighterModel[] genderFighterArray(String gender) {
+        ArrayList<FighterModel> convertThis = getFightersByGender(gender);
+        FighterModel[] genderArray = convertToArray(convertThis);
+        return genderArray;
     }
 
     // Get Fighter By Gender
@@ -137,16 +143,8 @@ public class DatabaseMethods2 {
     public static FighterModel[] genderFighterArray(String gender, WeightClass weightClass) {
         String weightC = weightClass.toString();
         ArrayList<FighterModel> convertThis = getFightersByGenderAndWeight(gender, weightC);
-        if (convertThis == null) {
-            return null;
-        } else {
-            int size = convertThis.size();
-            FighterModel[] fighters = new FighterModel[size];
-            for (int i = 0; i < size; i++) {
-                fighters[i] = convertThis.get(i);
-            }
-            return fighters;
-        }
+        FighterModel[] genderWeightArray = convertToArray(convertThis);
+        return genderWeightArray;
     }
 
     // Get Fighter By Gender And Weight
@@ -177,6 +175,77 @@ public class DatabaseMethods2 {
             return null;
         }
         return genderWeightFighters;
+    }
+
+    // Converts Arraylist of Fighters by their weight class to an array
+    public static FighterModel[] weightFighterArray(WeightClass weightClass) {
+        String weightC = weightClass.toString();
+        ArrayList<FighterModel> convertThis = getFighterByWeight(weightC);
+        FighterModel[] weightArray = convertToArray(convertThis);
+        return weightArray;
+    }
+
+    // Get Fighters From Database By Weight
+    private static ArrayList<FighterModel> getFighterByWeight(String weightClass) {
+        ArrayList<FighterModel> weightFighters = new ArrayList<FighterModel>();
+        FighterModel fighter = null;
+        try {
+            // Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
+            PreparedStatement ps = con.prepareStatement(
+                    "Select `FighterInfo`.FighterID, FirstName, LastName, NickName, Age, Gender, Height, Weight, WeightClass, Wins, Losses, Draws, NoContent, Striking, Grappling From `FighterInfo` \n"
+                            + "Join `FighterBody` ON `FighterInfo`.FighterID = `FighterBody`.FighterID  \n"
+                            + "Join `FighterRecord` ON `FighterInfo`.FighterID = `FighterRecord`.FighterID  \n"
+                            + "Join `FighterStyle` ON `FighterInfo`.FighterID = `FighterStyle`.FighterID  \n"
+                            + "Where `FighterBody`.WeightClass = (?)");
+            ps.setString(1, weightClass);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int fighterID = rs.getInt("FighterID");
+                fighter = DatabaseMethods.getFighterBySearch(fighterID);
+                weightFighters.add(fighter);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return weightFighters;
+    }
+
+    // Converts Arraylist of all Fighters an array
+    public static FighterModel[] allFighterArray() {
+        ArrayList<FighterModel> convertThis = getAllFighter();
+        FighterModel[] allArray = convertToArray(convertThis);
+        return allArray;
+    }
+
+    // Get All Fighters From Database
+    private static ArrayList<FighterModel> getAllFighter() {
+        ArrayList<FighterModel> allFighters = new ArrayList<FighterModel>();
+        FighterModel fighter = null;
+        try {
+            // Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
+            PreparedStatement ps = con.prepareStatement(
+                    "Select `FighterInfo`.FighterID, FirstName, LastName, NickName, Age, Gender, Height, Weight, WeightClass, Wins, Losses, Draws, NoContent, Striking, Grappling From `FighterInfo` \n"
+                            + "Join `FighterBody` ON `FighterInfo`.FighterID = `FighterBody`.FighterID  \n"
+                            + "Join `FighterRecord` ON `FighterInfo`.FighterID = `FighterRecord`.FighterID  \n"
+                            + "Join `FighterStyle` ON `FighterInfo`.FighterID = `FighterStyle`.FighterID");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int fighterID = rs.getInt("FighterID");
+                fighter = DatabaseMethods.getFighterBySearch(fighterID);
+                allFighters.add(fighter);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return allFighters;
     }
 
 }

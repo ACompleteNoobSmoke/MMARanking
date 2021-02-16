@@ -39,6 +39,22 @@ public class MenuDisplay {
         return showPick;
     }
 
+    // Display All Weight Class
+    public int displayWeightClass() {
+        WeightClass[] classes = WeightClass.values();
+        int pick = 0;
+        while (pick < 1 || pick > 8) {
+            System.out.println("*** Weight Classes ***\n");
+            for (int i = 0; i < 8; i++) {
+                System.out.println(i + 1 + ". " + classes[i]);
+            }
+            System.out.print("\nAction: ");
+            pick = ScannerInputs.getInt();
+            System.out.println("");
+        }
+        return pick;
+    }
+
     // Returns male weight class according to user input
     public WeightClass getWeightClassMale() {
         int maleWeightPick = showWeightClassesMale();
@@ -134,6 +150,7 @@ public class MenuDisplay {
         return viewPick;
     }
 
+    // The menu for the View All Option
     public int displayAllMenu() {
         int viewAllPick = 0;
         while (viewAllPick < 1 || viewAllPick > 5) {
@@ -150,13 +167,14 @@ public class MenuDisplay {
         return viewAllPick;
     }
 
+    // The menu for the View All(Weight Class) option
     public int displayWeightMenu() {
         int viewAllWeightPick = 0;
         while (viewAllWeightPick < 1 || viewAllWeightPick > 4) {
             System.out.println("*** View All(Weight Class) ***");
             System.out.println("1. Male Weight Class");
             System.out.println("2. Female Weight Class");
-            System.out.println("3. All Weight Class");
+            System.out.println("3. Weight Class");
             System.out.println("4. Back");
             System.out.print("\nAction: ");
             viewAllWeightPick = ScannerInputs.getInt();
