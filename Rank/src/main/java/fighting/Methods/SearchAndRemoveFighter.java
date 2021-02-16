@@ -20,16 +20,16 @@ public class SearchAndRemoveFighter {
     }
 
     // Remove Fighter Method
-    public FighterModel remove() {
+    public void remove() {
         FighterModel removeFighter = search();
         if (removeFighter != null) {
             int fighterID = removeFighter.getFighterInfo().getFighterID();
             DatabaseMethods2.deleteFighter(fighterID);
             System.out.println("\n" + removeFighter.getFighterInfo().getFirstName() + " "
                     + removeFighter.getFighterInfo().getLastName() + " Has Been Removed From The Rankings\n");
-            return removeFighter;
+            return;
         }
-        return null;
+        System.out.println("Fighter Could Not Be Found!");
     }
 
 }
