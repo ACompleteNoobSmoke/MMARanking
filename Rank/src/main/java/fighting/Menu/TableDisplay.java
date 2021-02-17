@@ -48,7 +48,6 @@ public class TableDisplay {
         for (int i = 0; i < fighterSize; i++) {
             tableContents[i] = (table) ? convertToString(fighters[i]) : convertToStringForSpecific(fighters[i]);
         }
-        // String[] tContent = (String[]) tableContents;
         return tableContents;
     }
 

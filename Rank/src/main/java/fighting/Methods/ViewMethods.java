@@ -133,10 +133,4 @@ public class ViewMethods {
         }
     }
 
-    public static void main(String[] arg) {
-        ViewMethods v = new ViewMethods();
-        while (true) {
-            v.viewOption();
-        }
-    }
 }

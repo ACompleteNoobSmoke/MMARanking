@@ -29,7 +29,7 @@ public class SearchAndRemoveFighter {
                     + removeFighter.getFighterInfo().getLastName() + " Has Been Removed From The Rankings\n");
             return;
         }
-        System.out.println("Fighter Could Not Be Found!");
+        System.out.println("\nFighter Could Not Be Found!\n");
     }
 
 }
