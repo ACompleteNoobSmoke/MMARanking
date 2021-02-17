@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import fighting.Enums.WeightClass;
 import fighting.Model.FighterModel;
@@ -94,6 +95,7 @@ public class DatabaseMethods2 {
         if (convertFighters == null) {
             return null;
         } else {
+            Collections.sort(convertFighters);
             int size = convertFighters.size();
             FighterModel[] fighters = new FighterModel[size];
             for (int i = 0; i < size; i++) {

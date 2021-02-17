@@ -1,6 +1,6 @@
 package fighting.Model;
 
-public class FighterModel {
+public class FighterModel implements Comparable<FighterModel> {
 
     private FighterInfo fighterInfo;
     private MeasurementModel fighterMeasurement;
@@ -58,6 +58,11 @@ public class FighterModel {
                 + fighterInfo.getFirstName() + ", gender=" + fighterMeasurement.getGender() + ", lastName="
                 + fighterInfo.getLastName() + ", nickName=" + fighterInfo.getNickName() + ", fighterID="
                 + fighterInfo.getFighterID() + "]";
+    }
+
+    @Override
+    public int compareTo(FighterModel f) {
+        return this.getFighterInfo().getLastName().compareToIgnoreCase(f.getFighterInfo().getLastName());
     }
 
 }

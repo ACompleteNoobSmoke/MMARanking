@@ -3,6 +3,7 @@ package fighting.Methods;
 import fighting.Enums.WeightClass;
 import fighting.Inputs.MeasurementInput;
 import fighting.Menu.MenuDisplay;
+import fighting.Menu.TableDisplay;
 import fighting.Model.FighterModel;
 
 public class ViewMethods {
@@ -61,6 +62,7 @@ public class ViewMethods {
             return;
         }
         viewFighters(fightersGender);
+        new TableDisplay().genderSpecificTable(gender, fightersGender);
     }
 
     // Option for the view all in the weight class
@@ -92,6 +94,7 @@ public class ViewMethods {
             return;
         }
         viewFighters(fighterWeight);
+        new TableDisplay().genderSpecificTable(gender, fighterWeight);
     }
 
     // View all fighters in 1 specific weight class
@@ -103,6 +106,7 @@ public class ViewMethods {
             return;
         }
         viewFighters(weightFighters);
+        new TableDisplay().viewAllTable(weightFighters);
     }
 
     // View all fighters in the database
@@ -113,6 +117,7 @@ public class ViewMethods {
             return;
         }
         viewFighters(allFighters);
+        new TableDisplay().viewAllTable(allFighters);
     }
 
     // View FighterModel Objects
@@ -125,6 +130,13 @@ public class ViewMethods {
                 System.out.println(fighter);
                 System.out.println("");
             }
+        }
+    }
+
+    public static void main(String[] arg) {
+        ViewMethods v = new ViewMethods();
+        while (true) {
+            v.viewOption();
         }
     }
 }
