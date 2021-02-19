@@ -27,6 +27,8 @@ public class TableDisplay {
         return tableContent;
     }
 
+    // Convert FighterModel Onject to string array for table -- used for gender
+    // specific stuff
     private String[] convertToStringForSpecific(FighterModel fighter) {
         String[] tableContent = new String[8];
         tableContent[0] = fighter.getFighterInfo().getFirstName();
@@ -41,7 +43,7 @@ public class TableDisplay {
     }
 
     // Convert an array of FighterModel to an Object array
-    public Object[] convertListToObject(boolean table, FighterModel[] fighters) {
+    private Object[] convertListToObject(boolean table, FighterModel[] fighters) {
         int fighterSize = fighters.length;
         Object[] tableContents = new Object[fighterSize];
 
@@ -51,6 +53,7 @@ public class TableDisplay {
         return tableContents;
     }
 
+    // Table for gender specific list view
     public void genderSpecificTable(String gender, FighterModel[] fighters) {
         String title = "All (" + gender + ")  Fighters";
         Object[] tableContent = convertListToObject(false, fighters);
@@ -59,6 +62,7 @@ public class TableDisplay {
         tableView(title, specificHeaders, tableContent);
     }
 
+    // Tbale to view all fighters
     public void viewAllTable(FighterModel[] fighters) {
         String title = "All Fighters";
         Object[] tableContent = convertListToObject(true, fighters);
@@ -67,7 +71,8 @@ public class TableDisplay {
         tableView(title, columnHeaders, tableContent);
     }
 
-    public void tableView(String title, String[] tableHead, Object[] tableContents) {
+    // Function for table display
+    private void tableView(String title, String[] tableHead, Object[] tableContents) {
         // Frame initiallization
         Object[] content = tableContents;
         f = new JFrame();

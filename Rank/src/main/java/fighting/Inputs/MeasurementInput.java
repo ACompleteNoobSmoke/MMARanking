@@ -97,6 +97,7 @@ public class MeasurementInput {
         return weightClass;
     }
 
+    // Get weight class used mostly for search function
     public static WeightClass getWeightClass() {
         int pick = new MenuDisplay().displayWeightClass();
         WeightClass weightClass = null;

@@ -1,5 +1,7 @@
 package fighting.Methods;
 
+import fighting.Database.DeleteDatabase;
+import fighting.Database.SearchDatabase;
 import fighting.Enums.WeightClass;
 import fighting.Inputs.FighterInputs;
 import fighting.Inputs.MeasurementInput;
@@ -15,7 +17,7 @@ public class SearchAndRemoveFighter {
         String gender = FighterInputs.getGender();
         System.out.println("");
         WeightClass fighterClass = MeasurementInput.getWeightClassGender(gender);
-        FighterModel fighter = DatabaseMethods.getSearchedFighter(firstName, lastName, gender, fighterClass);
+        FighterModel fighter = SearchDatabase.getSearchedFighter(firstName, lastName, gender, fighterClass);
         return fighter;
     }
 
@@ -24,7 +26,7 @@ public class SearchAndRemoveFighter {
         FighterModel removeFighter = search();
         if (removeFighter != null) {
             int fighterID = removeFighter.getFighterInfo().getFighterID();
-            DatabaseMethods2.deleteFighter(fighterID);
+            DeleteDatabase.deleteFighter(fighterID);
             System.out.println("\n" + removeFighter.getFighterInfo().getFirstName() + " "
                     + removeFighter.getFighterInfo().getLastName() + " Has Been Removed From The Rankings\n");
             return;

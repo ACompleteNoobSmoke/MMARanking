@@ -36,6 +36,7 @@ public class App {
         }
     }
 
+    // Function To close the program
     public void exitProgram() {
         System.out.println("Closing Ranking....");
         ScannerInputs.closeScanner();

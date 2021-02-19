@@ -2,6 +2,7 @@ package fighting.Methods;
 
 import java.util.Random;
 
+import fighting.Database.InsertDatabase;
 import fighting.Enums.GrapplingStyles;
 import fighting.Enums.StrikingStyles;
 import fighting.Enums.WeightClass;
@@ -11,6 +12,7 @@ import fighting.Inputs.StyleInputs;
 
 public class EnterFighter {
 
+    // Contains all the methods to add fighter to database
     public void enterNewFighter() {
         System.out.println("*** Enter New Fighter ***");
         int fighterID = getFighterID();
@@ -30,7 +32,7 @@ public class EnterFighter {
         Random rando = new Random();
         while (exists) {
             fighterID = rando.nextInt(2000);
-            exists = DatabaseMethods.checkFighterID(fighterID);
+            exists = InsertDatabase.checkFighterID(fighterID);
         }
         return fighterID;
 
@@ -43,7 +45,7 @@ public class EnterFighter {
         String nickName = FighterInputs.getNickName();
         int age = FighterInputs.getAge();
         System.out.println("");
-        DatabaseMethods.insertFighterInfo(fighterID, firstName, lastName, nickName, age);
+        InsertDatabase.insertFighterInfo(fighterID, firstName, lastName, nickName, age);
     }
 
     // Enter Fighter Measurement
@@ -56,7 +58,7 @@ public class EnterFighter {
         System.out.println("According to your weight of " + weight + "lbs");
         System.out.println("Your weight class is " + weightClass.toString());
         System.out.println("");
-        DatabaseMethods.insertFighterBody(fighterID, gender, height, weight, weightClass);
+        InsertDatabase.insertFighterBody(fighterID, gender, height, weight, weightClass);
     }
 
     // Enter Fighter Record
@@ -67,7 +69,7 @@ public class EnterFighter {
         int draws = FighterInputs.getDraws();
         int noContest = FighterInputs.getNoContest();
         System.out.println("");
-        DatabaseMethods.insertFighterRecord(fighterID, wins, losses, draws, noContest);
+        InsertDatabase.insertFighterRecord(fighterID, wins, losses, draws, noContest);
     }
 
     // Enter Fighter Styles
@@ -76,7 +78,7 @@ public class EnterFighter {
         StrikingStyles striking = StyleInputs.getStriking();
         GrapplingStyles grappling = StyleInputs.getGrappling();
         System.out.println("");
-        DatabaseMethods.insertFighterStyle(fighterID, striking, grappling);
+        InsertDatabase.insertFighterStyle(fighterID, striking, grappling);
     }
 
 }

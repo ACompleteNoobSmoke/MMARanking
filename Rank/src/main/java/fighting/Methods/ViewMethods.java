@@ -1,5 +1,6 @@
 package fighting.Methods;
 
+import fighting.Database.ViewDatabase;
 import fighting.Enums.WeightClass;
 import fighting.Inputs.MeasurementInput;
 import fighting.Menu.MenuDisplay;
@@ -55,9 +56,9 @@ public class ViewMethods {
     // View all fighters according to their gender
     private void viewAllGender(int genderChoice) {
         String gender = genderChoice == 1 ? "Male" : "Female";
-        FighterModel[] fightersGender = DatabaseMethods2.genderFighterArray(gender);
+        FighterModel[] fightersGender = ViewDatabase.genderFighterArray(gender);
         System.out.println("*** View All (" + gender + ") Fighters ***\n");
-        if (fightersGender == null) {
+        if (fightersGender == null || fightersGender.length == 0) {
             System.out.println("\n" + gender + " Fighters Ranking Is Currently Empty\n");
             return;
         }
@@ -87,9 +88,9 @@ public class ViewMethods {
     private void viewAllGenderWeight(int genderChoice) {
         String gender = genderChoice == 1 ? "Male" : "Female";
         WeightClass weightClass = MeasurementInput.getWeightClassGender(gender);
-        FighterModel[] fighterWeight = DatabaseMethods2.genderFighterArray(gender, weightClass);
+        FighterModel[] fighterWeight = ViewDatabase.genderFighterArray(gender, weightClass);
         System.out.println("*** View All (" + gender + ") Fighters ***\n");
-        if (fighterWeight == null) {
+        if (fighterWeight == null || fighterWeight.length == 0) {
             System.out.println("\n" + gender + " Fighters Ranking Is Currently Empty\n");
             return;
         }
@@ -100,8 +101,8 @@ public class ViewMethods {
     // View all fighters in 1 specific weight class
     private void viewAllWeight() {
         WeightClass weightClass = MeasurementInput.getWeightClass();
-        FighterModel[] weightFighters = DatabaseMethods2.weightFighterArray(weightClass);
-        if (weightFighters == null) {
+        FighterModel[] weightFighters = ViewDatabase.weightFighterArray(weightClass);
+        if (weightFighters == null || weightFighters.length == 0) {
             System.out.println("\n Weight Class: " + weightClass + " Currently Empty\n");
             return;
         }
@@ -111,8 +112,8 @@ public class ViewMethods {
 
     // View all fighters in the database
     private void viewAllFighters() {
-        FighterModel[] allFighters = DatabaseMethods2.allFighterArray();
-        if (allFighters == null) {
+        FighterModel[] allFighters = ViewDatabase.allFighterArray();
+        if (allFighters == null || allFighters.length == 0) {
             System.out.println("\n Fighter Rankings Are Currently Empty\n");
             return;
         }
