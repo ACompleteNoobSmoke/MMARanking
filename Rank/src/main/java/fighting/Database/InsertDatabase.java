@@ -10,9 +10,10 @@ import fighting.Enums.StrikingStyles;
 import fighting.Enums.WeightClass;
 
 public class InsertDatabase {
+
+    // Check to see if Fighter ID exists in database
     public static boolean checkFighterID(int fighterID) {
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
             PreparedStatement ps = con.prepareStatement("Select FighterID From `FighterInfo` Where FighterID = (?)");
@@ -37,7 +38,6 @@ public class InsertDatabase {
     // Insert Fighter Information Into Database
     public static void insertFighterInfo(int fighterID, String firstName, String lastName, String nickName, int age) {
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
             PreparedStatement ps = con.prepareStatement("Insert Into `FighterInfo` values(?, ?, ?, ?, ?)");
@@ -57,7 +57,6 @@ public class InsertDatabase {
     public static void insertFighterBody(int fighterID, String gender, String height, double weight,
             WeightClass weightClass) {
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
             PreparedStatement ps = con.prepareStatement("Insert Into `FighterBody` values(?, ?, ?, ?, ?)");
@@ -76,7 +75,6 @@ public class InsertDatabase {
     // Insert Fighter Record Information Into Database
     public static void insertFighterRecord(int fighterID, int wins, int losses, int draws, int noContest) {
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
             PreparedStatement ps = con.prepareStatement("Insert Into `FighterRecord` values(?, ?, ?, ?, ?)");
@@ -95,7 +93,6 @@ public class InsertDatabase {
     // Insert Fighter Style Information Into Database
     public static void insertFighterStyle(int fighterID, StrikingStyles strikes, GrapplingStyles grapple) {
         try {
-            // Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/FighterRank?autoReconnect=true&useSSL=false", "root", "codingroot1!");
             PreparedStatement ps = con.prepareStatement("Insert Into `FighterStyle` values(?, ?, ?)");

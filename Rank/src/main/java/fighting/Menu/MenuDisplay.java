@@ -150,7 +150,7 @@ public class MenuDisplay {
         return viewPick;
     }
 
-    // The menu for the View All Option
+    // The menu for the View All option
     public int displayAllMenu() {
         int viewAllPick = 0;
         while (viewAllPick < 1 || viewAllPick > 5) {
