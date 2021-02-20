@@ -12,12 +12,15 @@ public class ViewMethods {
     // View Options
     public void viewOption() {
         MenuDisplay DM = new MenuDisplay();
-        int viewChoicePick = DM.displayViewMenu();
-        if (viewChoicePick != 3) {
+        boolean previous = true;
+        while (previous) {
+            int viewChoicePick = DM.displayViewMenu();
             if (viewChoicePick == 1) {
                 viewSearchFighter();
             } else if (viewChoicePick == 2) {
-                viewAllChoices(DM);
+                previous = viewAllChoices(DM);
+            } else if (viewChoicePick == 3) {
+                previous = false;
             }
         }
     }
@@ -35,7 +38,7 @@ public class ViewMethods {
     }
 
     // Get all from the Display all choice
-    private void viewAllChoices(MenuDisplay menu) {
+    private boolean viewAllChoices(MenuDisplay menu) {
         boolean previous = false;
         while (!previous) {
             int viewAllChoicesPick = menu.displayAllMenu();
@@ -51,6 +54,7 @@ public class ViewMethods {
                 previous = true;
             }
         }
+        return previous;
     }
 
     // View all fighters according to their gender

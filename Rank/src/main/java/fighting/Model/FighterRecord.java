@@ -62,15 +62,15 @@ public class FighterRecord {
         if (noContest == 0) {
             record = title() + wins + "-" + losses + "-" + draws + " (W-L-D)";
         } else if (noContest > 0 && draws <= 0) {
-            record = title() + wins + "-" + losses + "\n(" + noContest + ")";
+            record = title() + wins + "-" + losses + " (" + noContest + ")  (W-L (NC))";
         } else if (noContest >= 1 && draws >= 1) {
-            record = title() + wins + "-" + losses + "-" + draws + "\n(" + noContest + ")";
+            record = title() + wins + "-" + losses + "-" + draws + " (" + noContest + ") (W-L-D (NC))";
         }
 
         return record;
     }
 
     public String title() {
-        return "*** Fighter's Record ***\n";
+        return "*** Fighter's Record ***\nRecord: ";
     }
 }

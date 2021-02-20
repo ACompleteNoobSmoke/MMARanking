@@ -68,7 +68,7 @@ public class MeasurementInput {
             if (inch == 0) {
                 height = Integer.toString(feet);
             } else {
-                height = feet + "'" + inch + "\"" + "\"";
+                height = feet + "'" + inch + "\"";
             }
         }
         return height;

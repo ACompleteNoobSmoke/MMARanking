@@ -23,7 +23,11 @@ public class App {
                 break;
             case 2:
                 FighterModel searchedFighter = searchRemove.search();
-                viewing.viewFighters(searchedFighter);
+                if (searchedFighter != null) {
+                    viewing.viewFighters(searchedFighter);
+                    break;
+                }
+                System.out.println("\nFighter Cannot Be Found");
                 break;
             case 3:
                 searchRemove.remove();
@@ -45,7 +49,9 @@ public class App {
 
     public static void main(String[] args) {
         App runProgram = new App();
-        while (true)
+        while (true) {
             runProgram.program();
+            System.out.println("");
+        }
     }
 }
