@@ -57,16 +57,20 @@ public class FighterRecord {
         return noContest;
     }
 
-    public String quickView() {
+    public String toString() {
         String record = "";
         if (noContest == 0) {
-            record = wins + "-" + losses + "-" + draws + " (W-L-D)";
+            record = title() + wins + "-" + losses + "-" + draws + " (W-L-D)";
         } else if (noContest > 0 && draws <= 0) {
-            record = wins + "-" + losses + "\n(" + noContest + ")";
+            record = title() + wins + "-" + losses + "\n(" + noContest + ")";
         } else if (noContest >= 1 && draws >= 1) {
-            record = wins + "-" + losses + "-" + draws + "\n(" + noContest + ")";
+            record = title() + wins + "-" + losses + "-" + draws + "\n(" + noContest + ")";
         }
 
         return record;
+    }
+
+    public String title() {
+        return "*** Fighter's Record ***\n";
     }
 }

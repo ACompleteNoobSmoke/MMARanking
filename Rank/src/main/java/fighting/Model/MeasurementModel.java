@@ -53,8 +53,12 @@ public class MeasurementModel {
     }
 
     public String toString() {
-        return "Gender: " + gender + "\n" + "Weight Class: " + weightClass + "\n" + "Weight: " + weight + " lbs\n"
-                + "Height:  " + height;
+        return title() + "Gender: " + gender + "\n" + "Height:  " + height + "\n" + "Weight: " + weight + " lbs\n"
+                + "Weight Class: " + weightClass;
+    }
+
+    public String title() {
+        return "*** Fighter Body Measurements ***\n";
     }
 
 }

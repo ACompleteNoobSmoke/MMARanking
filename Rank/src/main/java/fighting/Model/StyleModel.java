@@ -33,7 +33,11 @@ public class StyleModel {
     }
 
     public String toString() {
-        return "Striking: " + striking + "\t\tGrappling: " + grappling;
+        return title() + "Striking: " + striking + "\tGrappling: " + grappling;
+    }
+
+    public String title() {
+        return "*** Fighter's Fighting Style ***\n";
     }
 
 }

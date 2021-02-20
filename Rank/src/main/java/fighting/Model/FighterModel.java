@@ -53,11 +53,9 @@ public class FighterModel implements Comparable<FighterModel> {
 
     @Override
     public String toString() {
-        return "FighterModel [age=" + fighterInfo.getAge() + ", fighterMeasurement=" + fighterMeasurement
-                + ", fighterRecord=" + fighterRecord.quickView() + ", fighterStyle=" + fighterStyle + ", firstName="
-                + fighterInfo.getFirstName() + ", gender=" + fighterMeasurement.getGender() + ", lastName="
-                + fighterInfo.getLastName() + ", nickName=" + fighterInfo.getNickName() + ", fighterID="
-                + fighterInfo.getFighterID() + "]";
+        return "     \n *** Fighter Profile ***\n" + getFighterInfo().toString() + "\n\n"
+                + getFighterMeasurement().toString() + " \n\n" + getFighterStyle().toString() + "\n\n"
+                + getFighterRecord().toString();
     }
 
     @Override

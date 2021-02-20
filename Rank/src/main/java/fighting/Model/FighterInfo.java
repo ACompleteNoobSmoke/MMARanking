@@ -55,4 +55,9 @@ public class FighterInfo {
         this.age = age;
     }
 
+    public String toString() {
+        return "Name: " + firstName + " " + ((nickName.isBlank()) ? "" : "\"" + nickName + "\" ") + lastName + "\n"
+                + "Age " + age;
+    }
+
 }
